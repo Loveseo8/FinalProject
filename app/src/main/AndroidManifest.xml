@@ -13,7 +13,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Login"></activity>
         <activity android:name=".SignUp"></activity>
-        <activity android:name=".BooksView"></activity>
+        <activity android:name=".BooksView"
+            android:parentActivityName=".BottomNavigation">
+        </activity>
         <activity android:name=".BottomNavigation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

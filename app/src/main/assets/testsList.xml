@@ -1,0 +1,15 @@
+<tests>
+
+    <test>The Article</test>
+    <test>The Noun</test>
+    <test>The Verb</test>
+    <test>The Adjective</test>
+    <test>The Adverb</test>
+    <test>The Numeral</test>
+    <test>The Preposition</test>
+    <test>The Conjunction</test>
+    <test>Family</test>
+    <test>Animals</test>
+    <test>Colors</test>
+
+</tests>

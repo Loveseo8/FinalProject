@@ -1,6 +1,15 @@
-<themes>
+<topics>
 
     <topic>The Article</topic>
     <topic>The Noun</topic>
+    <topic>The Verb</topic>
+    <topic>The Adjective</topic>
+    <topic>The Adverb</topic>
+    <topic>The Numeral</topic>
+    <topic>The Preposition</topic>
+    <topic>The Conjunction</topic>
+    <topic>Family</topic>
+    <topic>Animals</topic>
+    <topic>Colors</topic>
 
-</themes>
+</topics>
