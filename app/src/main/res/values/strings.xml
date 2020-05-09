@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">FinalProjectAliceandRoma</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bottom_navigation_books_title">Books</string>
+    <string name="bottom_navigation_tests_title">Tests</string>
+    <string name="bottom_navigation_settings_title">Settings</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account">Already have an account? Sign in Here</string>
+    <string name="fields_empty">Fields Empty!</string>
+    <string name="new_user">New User? Register Here</string>
+    <string name="sign_in">Sign In</string>
+    <string name="logout">Logout</string>
+</resources>

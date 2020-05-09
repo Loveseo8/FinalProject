@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "247481702071",
+    "firebase_url": "https://learnenglish-f7f68.firebaseio.com",
+    "project_id": "learnenglish-f7f68",
+    "storage_bucket": "learnenglish-f7f68.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:247481702071:android:12661bd58e70302bd01f32",
+        "android_client_info": {
+          "package_name": "rna.FinalProjectAliceandRoma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "247481702071-ikodvom5cr5fg2eo5rbvnqk2sgmtnk9o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvGPmWFThc1J4obxEKDHV0VAE-VU_I8AU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "247481702071-ikodvom5cr5fg2eo5rbvnqk2sgmtnk9o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
