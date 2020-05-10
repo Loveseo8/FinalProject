@@ -11,11 +11,14 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login"></activity>
-        <activity android:name=".SignUp"></activity>
-        <activity android:name=".BooksView"
-            android:parentActivityName=".BottomNavigation">
-        </activity>
+        <activity android:name=".FillGapsTest"></activity>
+        <activity android:name=".ChooseBetweenTwoTest" />
+        <activity android:name=".MatchImagesAndWordsTest" />
+        <activity android:name=".Login" />
+        <activity android:name=".SignUp" />
+        <activity
+            android:name=".BooksView"
+            android:parentActivityName=".BottomNavigation" />
         <activity android:name=".BottomNavigation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
