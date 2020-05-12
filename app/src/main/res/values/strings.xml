@@ -14,4 +14,6 @@
     <string name="new_user">New User? Register Here</string>
     <string name="sign_in">Sign In</string>
     <string name="logout">Logout</string>
+    <string name="your_result_is">Your result is</string>
+    <string name="goose_english">Goose English</string>
 </resources>

@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
@@ -17,16 +16,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ItemClickListener clickListener;
 
     RecyclerViewAdapter(List<String> topics, Context context) {
+
         this.topics = topics;
         this.inflater = LayoutInflater.from(context);
+
     }
 
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         View view = inflater.inflate(R.layout.row, parent, false);
         return new ViewHolder(view);
+
     }
 
     @Override
@@ -52,18 +55,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             itemView.setOnClickListener(this);
 
         }
-            @Override
-            public void onClick(View view){
 
-                if (clickListener != null) clickListener.onItemClick(view, getAdapterPosition());
+        @Override
+        public void onClick(View view){
 
-            }
+            if (clickListener != null) clickListener.onItemClick(view, getAdapterPosition());
+
         }
+    }
 
         String getItem(int id) { return topics.get(id); }
 
         void setClickListener(ItemClickListener itemClickListener) { this.clickListener = itemClickListener; }
-
 
         public interface ItemClickListener {
 

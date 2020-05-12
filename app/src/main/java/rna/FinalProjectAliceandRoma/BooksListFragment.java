@@ -7,23 +7,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -85,18 +80,19 @@ public class BooksListFragment extends Fragment implements RecyclerViewAdapter.I
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         adapter = new RecyclerViewAdapter(topics, getContext());
         adapter.setClickListener(this);
-
         recyclerView.setAdapter(adapter);
+
     }
 
     @Override
     public void onItemClick(View view, int position) {
+
         Intent i = new Intent(getActivity(), BooksView.class);
         i.putExtra("title", adapter.getItem(position));
         startActivity(i);
+
     }
 }
 

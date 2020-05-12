@@ -66,7 +66,6 @@ public class SignUp extends AppCompatActivity {
                                 snackbar.show();
 
                             }
-
                         }
                     });
 
@@ -76,7 +75,6 @@ public class SignUp extends AppCompatActivity {
                     snackbar.show();
 
                 }
-
             }
         });
 

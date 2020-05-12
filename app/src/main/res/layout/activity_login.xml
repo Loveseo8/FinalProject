@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,7 +14,14 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_margin="15dp"
-        android:src="@drawable/icon"/>
+        android:src="@drawable/iconn"/>
+
+    <TextView
+        style="@style/TextAppearance.MaterialComponents.Headline4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/goose_english" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -25,6 +33,8 @@
         android:id="@+id/login_email"
         android:layout_width="match_parent"
         android:layout_height="55dp"
+
+        style="@style/Widget.AppCompat.TextView"
         android:layout_margin="15dp"
         android:hint="@string/enter_email"
         android:inputType="textEmailAddress" />
@@ -32,35 +42,41 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_margin="15dp"
+            style="@style/Widget.AppCompat.TextView"
             android:hint="@string/enter_password"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <info.hoang8f.widget.FButton
         android:id="@+id/button_login"
-        style="@style/Widget.MaterialComponents.Button.TextButton.Dialog"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_margin="15dp"
-        android:text="@string/sign_in"/>
+        android:layout_margin="25dp"
+        android:text="@string/sign_in"
+        fbutton:shadowColor="@color/fbutton_default_shadow_color"
+        fbutton:fButtonColor="@color/fbutton_default_color"
+        fbutton:cornerRadius="@dimen/fbutton_default_conner_radius"
+        fbutton:shadowEnabled="true"
+        android:textColor="@android:color/white"
+        fbutton:shadowHeight="@dimen/fbutton_default_shadow_height"/>
 
     <TextView
         android:id="@+id/textViewSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/new_user"
-        style="@style/Widget.MaterialComponents.TextView"
+        android:fontFamily="sans-serif-light"
         android:layout_margin="15dp"
         android:gravity="center_horizontal"
         android:textSize="20dp"/>

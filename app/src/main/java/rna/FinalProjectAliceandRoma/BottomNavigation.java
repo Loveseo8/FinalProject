@@ -36,17 +36,18 @@ public class BottomNavigation extends AppCompatActivity {
             }
         };
 
-            bottomNavigationView =(BottomNavigationView)
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
 
-            findViewById(R.id.bottomNavigation);
+        loadFragment(new BooksListFragment());
 
-            loadFragment(new BooksListFragment());
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
 
             {
                 @Override
                 public boolean onNavigationItemSelected (@NonNull MenuItem item){
+
                 Fragment fragment = null;
+
                 switch (item.getItemId()) {
 
                     case R.id.books:
@@ -61,8 +62,8 @@ public class BottomNavigation extends AppCompatActivity {
 
                 }
 
-
                 return loadFragment(fragment);
+
             }
             });
 
