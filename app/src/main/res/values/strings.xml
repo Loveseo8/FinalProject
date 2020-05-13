@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FinalProjectAliceandRoma</string>
+    <string name="app_name">Goose English</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -16,4 +16,13 @@
     <string name="logout">Logout</string>
     <string name="your_result_is">Your result is</string>
     <string name="goose_english">Goose English</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="are_you_sure_you_want_to_log_out">Are you sure you want to log out?</string>
+    <string name="change_email">Change Email</string>
+    <string name="are_you_sure_you_want_to_change_password">Are you sure you want to change password?</string>
+    <string name="change_password">Change Password</string>
+    <string name="are_you_sure_you_want_to_change_email">Are you sure you want to change email?</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="are_you_sure_you_want_to_delete_account">Are you sure you want to delete account?</string>
 </resources>

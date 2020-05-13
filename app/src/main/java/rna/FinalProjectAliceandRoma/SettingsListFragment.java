@@ -1,25 +1,40 @@
 package rna.FinalProjectAliceandRoma;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-public class SettingsListFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
 
-    Button button_logout;
+public class SettingsListFragment extends Fragment implements RecyclerViewAdapter.ItemClickListener {
+
+    RecyclerViewAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_settings_list, container, false);
+        return inflater.inflate(R.layout.recycler_view, container, false);
 
     }
 
@@ -27,16 +42,125 @@ public class SettingsListFragment extends Fragment {
     public void onViewCreated(@NonNull final View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        button_logout = (Button) view.findViewById(R.id.button_logout);
-        button_logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        List<String> settings = new ArrayList<>();
 
-                FirebaseAuth.getInstance().signOut();
-                Intent i = new Intent(getActivity(), Login.class);
-                startActivity(i);
+        settings.add("Change Email");
+        settings.add("Change Password");
+        settings.add("Change Theme");
+        settings.add("My Achievements");
+        settings.add("Delete Account");
+        settings.add("Logout");
 
-            }
-        });
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new RecyclerViewAdapter(settings, getContext());
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
+
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+
+        Intent i;
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        switch (adapter.getItem(position)) {
+
+            case "Logout":
+
+                new AlertDialog.Builder(getContext()).setTitle(R.string.logout).setMessage(R.string.are_you_sure_you_want_to_log_out).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        FirebaseAuth.getInstance().signOut();
+                        i = new Intent(getActivity(), Login.class);
+                        startActivity(i);
+
+                    }
+                }).setNeutralButton(R.string.no, null).show();
+
+                break;
+
+            case "Change Email":
+
+                new AlertDialog.Builder(getContext()).setTitle(R.string.change_email).setMessage(R.string.are_you_sure_you_want_to_change_email ).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // CHANGE EMAIL
+
+                    }
+                }).setNeutralButton(R.string.no, null).show();
+
+                break;
+
+            case "Change Password":
+
+                new AlertDialog.Builder(getContext()).setTitle(R.string.change_password).setMessage(R.string.are_you_sure_you_want_to_change_password).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        // CHANGE PASSWORD
+
+                    }
+                }).setNeutralButton(R.string.no, null).show();
+
+                break;
+
+            case "Delete Account":
+
+                new AlertDialog.Builder(getContext()).setTitle(R.string.delete_account).setMessage(R.string.are_you_sure_you_want_to_delete_account).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        AlertDialog.Builder alertDialog1 = new AlertDialog.Builder(context);
+                        View customView = LayoutInflater.from(context).inflate(R.layout.dialog_custom_layout, null);
+                        Button btnClose = customView.findViewById(R.id.btnCloseDialog);
+                        alertDialog1.setView(customView);
+
+                        final AlertDialog customDialog = alertDialog1.create();
+                        customDialog.show();
+                        btnClose.setOnClickListener(new View.OnClickListener() {
+
+                            @Override
+                            /////public void onClick(View view) { 70                            customDialog.cancel(); 71                        } 72                    });
+
+                        user.reauthenticate(user.getEmail(), password).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                        if (task.isSuccessful()) {
+
+                                            i = new Intent(getActivity(), Login.class);
+                                            startActivity(i);
+
+                                        }
+
+                                    }
+                                });
+                            }
+                        });
+                        Intent i = new Intent(getActivity(), Login.class);
+                        startActivity(i);
+
+                    }
+                }).setNeutralButton(R.string.no, null).show();
+
+                break;
+
+        }
     }
 }
