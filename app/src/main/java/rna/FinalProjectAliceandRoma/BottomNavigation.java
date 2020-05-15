@@ -59,6 +59,9 @@ public class BottomNavigation extends AppCompatActivity {
                     case R.id.settings:
                         fragment = new SettingsListFragment();
                         break;
+                    case R.id.dictionary:
+                        fragment = new DictionaryFragment();
+                        break;
 
                 }
 

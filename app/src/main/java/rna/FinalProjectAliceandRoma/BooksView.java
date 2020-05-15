@@ -2,8 +2,10 @@ package rna.FinalProjectAliceandRoma;
 
 import android.os.Bundle;
 import android.webkit.WebView;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class BooksView extends AppCompatActivity {
 
@@ -18,5 +20,4 @@ public class BooksView extends AppCompatActivity {
         pdf_view.loadUrl("file:///android_asset/topics/" + getIntent().getExtras().getString("title") + ".html");
 
     }
-
 }
