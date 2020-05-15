@@ -51,7 +51,6 @@ public class EnterPassword extends AppCompatActivity {
 
    }
 });
-        });
 
     }
 }
