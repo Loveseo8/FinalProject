@@ -33,7 +33,7 @@ public class EnterPassword extends AppCompatActivity {
             public void onClick(View view) {
 
             final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            AuthCredential credential = EmailAuthProvider.getCredential("user@example.com", "password1234");
+            AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), password);
             user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
