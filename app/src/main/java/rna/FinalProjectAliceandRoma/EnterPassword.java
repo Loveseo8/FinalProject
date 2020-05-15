@@ -32,30 +32,25 @@ public class EnterPassword extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), password);
-
-                user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            AuthCredential credential = EmailAuthProvider.getCredential("user@example.com", "password1234");
+            user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-
-
-                                if (task.isSuccessful()) {
-
-                                    Intent i = new Intent(EnterPassword.this, Login.class);
-                                    startActivity(i);
-
-                                }
-
-                            }
-                        });
+                    user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        
+                        Intent i = new Intent(EnterPassword.this, Login.class);
+                        startActivity(i);
+                        
                     }
-                });
+                }
+            });
 
-            }
+   }
+});
         });
 
     }
