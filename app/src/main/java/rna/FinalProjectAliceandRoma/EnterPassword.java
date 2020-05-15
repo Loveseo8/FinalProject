@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class EnterPassword extends AppCompatActivity {
 
     EditText enter_password;
-    Button close;
+    Button next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +26,9 @@ public class EnterPassword extends AppCompatActivity {
 
         enter_password = findViewById(R.id.enter_password);
         final String password = enter_password.getText().toString();
-        close = findViewById(R.id.button_close);
+        next = findViewById(R.id.button_next);
 
-        close.setOnClickListener(new View.OnClickListener() {
+        next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
