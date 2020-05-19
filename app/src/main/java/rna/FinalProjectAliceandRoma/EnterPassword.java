@@ -14,44 +14,29 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class EnterPassword extends AppCompatActivity {
 
-    EditText enter_password;
+    EditText enter;
     Button next;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.enter_your_password);
+        setContentView(R.layout.enter);
 
-        enter_password = findViewById(R.id.enter_password);
+        enter = findViewById(R.id.enter_password);
         next = findViewById(R.id.button_next);
 
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        switch (getIntent().getExtras().getString("change")) {
 
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            case "email":
 
-                switch (getIntent().getExtras().getString("change")) {
+                enter.setHint(R.string.enter_new_email);
 
-                    case "email":
+                next.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                    user.updateEmail(enter_password.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-
-                                Intent i = new Intent(EnterPassword.this, Login.class);
-                                startActivity(i);
-
-                            }
-                        }
-                    });
-
-                    break;
-
-                    case "password":
-
-                        user.updatePassword(enter_password.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        user.updateEmail(enter.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
@@ -63,10 +48,37 @@ public class EnterPassword extends AppCompatActivity {
                             }
                         });
 
-                        break;
+                    }
+                });
 
-                }
-            }
-        });
+                break;
+
+            case "password":
+
+                enter.setHint(R.string.enter_new_password);
+
+                next.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        user.updatePassword(enter.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+
+                                    Intent i = new Intent(EnterPassword.this, Login.class);
+                                    startActivity(i);
+
+                                }
+                            }
+                        });
+
+                    }
+                });
+
+                break;
+
+        }
+
     }
 }

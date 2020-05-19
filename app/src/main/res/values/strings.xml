@@ -30,4 +30,7 @@
     <string name="update">Update</string>
     <string name="add">Add</string>
     <string name="close">Close</string>
+    <string name="dictionary">Dictionary</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="enter_new_email">Enter new email</string>
 </resources>

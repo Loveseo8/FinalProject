@@ -25,14 +25,7 @@
             android:text="@string/add"
             android:textColor="@android:color/white"/>
 
-        <ListView
-            android:id="@+id/listViewWord"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp">
-
-
-        </ListView>
+        <include layout="@layout/recycler_view"/>
 
 </LinearLayout>
 
