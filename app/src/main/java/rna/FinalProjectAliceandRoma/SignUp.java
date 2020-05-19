@@ -65,6 +65,11 @@ public class SignUp extends AppCompatActivity {
                                 Snackbar snackbar = Snackbar.make(findViewById(R.id.sign_up_layout), "SignUp is unsuccessful: " + task.getException().getMessage(), Snackbar.LENGTH_LONG);
                                 snackbar.show();
 
+                            } else {
+
+                                Intent i = new Intent(SignUp.this, Login.class);
+                                startActivity(i);
+
                             }
                         }
                     });

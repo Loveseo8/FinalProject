@@ -86,7 +86,9 @@ public class SettingsListFragment extends Fragment implements RecyclerViewAdapte
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        // CHANGE EMAIL
+                        Intent i = new Intent(getActivity(), EnterPassword.class);
+                        i.putExtra("change", "email");
+                        startActivity(i);
 
                     }
                 }).setNeutralButton(R.string.no, null).show();
@@ -101,7 +103,9 @@ public class SettingsListFragment extends Fragment implements RecyclerViewAdapte
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        // CHANGE PASSWORD
+                        Intent i = new Intent(getActivity(), EnterPassword.class);
+                        i.putExtra("change", "password");
+                        startActivity(i);
 
                     }
                 }).setNeutralButton(R.string.no, null).show();
@@ -116,8 +120,18 @@ public class SettingsListFragment extends Fragment implements RecyclerViewAdapte
                    @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        Intent i = new Intent(getActivity(), EnterPassword.class);
-                        startActivity(i);
+                       FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                       user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                           @Override
+                           public void onComplete(@NonNull Task<Void> task) {
+                               if (task.isSuccessful()) {
+
+                                   Intent i = new Intent(getActivity(), Login.class);
+                                   startActivity(i);
+
+                               }
+                           }
+                       });
 
                     }
                 }).setNeutralButton(R.string.no, null).show();
