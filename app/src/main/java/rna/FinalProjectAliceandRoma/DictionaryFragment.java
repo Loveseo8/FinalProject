@@ -7,10 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,13 +21,17 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class DictionaryFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
+
+public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.ItemClickListener {
 
     EditText editTextWord;
     Button add;
     DatabaseReference databaseWords;
-
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    RecyclerViewAdapter adapter;
+    List<String> myWords = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,6 +57,13 @@ public class DictionaryFragment extends Fragment {
             }
         });
 
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new RecyclerViewAdapter(myWords, getContext());
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
+
     }
 
     private void addWord() {
@@ -67,10 +81,19 @@ public class DictionaryFragment extends Fragment {
             Word word1 = new Word(word, id, user.getUid());
             databaseWords.child(user.getUid()).child(id).setValue(word1);
 
+            myWords.add(word1.getWord());
+
             Snackbar snackbar = Snackbar.make(getActivity().findViewById(R.id.dictionary_layout), "Word added!", Snackbar.LENGTH_LONG);
             snackbar.show();
 
         }
+
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+
+        Toast.makeText(getContext(), "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_LONG).show();
 
     }
 
