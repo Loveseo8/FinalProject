@@ -11,18 +11,12 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/Light">
-        <activity android:name=".EnterPassword"></activity>
+
+        <activity
+            android:name=".EnterPassword"
+            android:parentActivityName=".BottomNavigation"/>
         <activity
             android:name=".TestResult"
-            android:parentActivityName=".BottomNavigation" />
-        <activity
-            android:name=".FillGapsTest"
-            android:parentActivityName=".BottomNavigation" />
-        <activity
-            android:name=".ChooseBetweenTwoTest"
-            android:parentActivityName=".BottomNavigation" />
-        <activity
-            android:name=".MatchImagesAndWordsTest"
             android:parentActivityName=".BottomNavigation" />
         <activity
             android:name=".Login"
@@ -36,16 +30,19 @@
         <activity
             android:name=".BottomNavigation"
             android:theme="@style/LightNoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>

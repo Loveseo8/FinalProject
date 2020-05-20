@@ -1,31 +1,30 @@
 package rna.FinalProjectAliceandRoma;
 
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class DictionaryFragment extends Fragment {
 
-    DatabaseReference wordsDatabase;
+    EditText editTextWord;
+    Button add;
+    DatabaseReference databaseWords;
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-    Button add_word;
-    EditText editTextWord;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,61 +36,78 @@ public class DictionaryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        wordsDatabase = FirebaseDatabase.getInstance().getReference();
+        databaseWords = FirebaseDatabase.getInstance().getReference("words");
 
-        add_word = (Button) view.findViewById(R.id.button_add_word);
         editTextWord = (EditText) view.findViewById(R.id.editTextWord);
-        add_word.setOnClickListener(new View.OnClickListener() {
+        add = (Button) view.findViewById(R.id.button_add_word);
+
+        add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String input = editTextWord.getText().toString();
-                String [] word = input.split(" ");
-                writeNewWord(word[0], word[1]);
+                addWord();
 
             }
         });
 
     }
 
-    private void writeNewWord(String word, String translation) {
+    private void addWord() {
 
+        String word = editTextWord.getText().toString().trim();
 
-        String key = wordsDatabase.child("words").push().getKey();
-        Word word1 = new Word(word, translation);
-        Map<String, Object> wordValues = word1.toMap();
+        if (TextUtils.isEmpty(word)) {
 
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/user-word/" + user.getUid() + "/" + key, wordValues);
+            Snackbar snackbar = Snackbar.make(getActivity().findViewById(R.id.dictionary_layout), "Enter word!", Snackbar.LENGTH_LONG);
+            snackbar.show();
 
-        wordsDatabase.updateChildren(childUpdates);
+        } else {
+
+            String id = databaseWords.push().getKey();
+            Word word1 = new Word(word, id, user.getUid());
+            databaseWords.child(user.getUid()).child(id).setValue(word1);
+
+            Snackbar snackbar = Snackbar.make(getActivity().findViewById(R.id.dictionary_layout), "Word added!", Snackbar.LENGTH_LONG);
+            snackbar.show();
+
+        }
 
     }
+
 }
 
 class Word {
 
     String word;
-    String translation;
+    String wordID;
+    String userID;
 
     public Word() {
     }
 
-    public Word(String word, String translation) {
+    public Word(String word, String wordID, String userID) {
 
         this.word = word;
-        this.translation = translation;
+        this.wordID = wordID;
+        this.userID = userID;
+
     }
 
-    public Map<String, Object> toMap() {
-
-        HashMap<String, Object> word = new HashMap<>();
-
-        word.put("word", word);
-        word.put("translation", translation);
+    public String getWord() {
 
         return word;
 
     }
 
+    public String getWordID() {
+
+        return wordID;
+
+    }
+
+    public String getUserID() {
+
+        return userID;
+
+    }
 }
