@@ -35,6 +35,7 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     RecyclerViewAdapter adapter;
     List<String> myWords = new ArrayList<>();
+    RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,6 +60,10 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
 
             }
         });
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
     }
 
@@ -97,9 +102,6 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
 
         }
 
-        RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new RecyclerViewAdapter(myWords, getContext());
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
