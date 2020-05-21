@@ -55,7 +55,9 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             style="@style/Widget.AppCompat.TextView"
-            android:hint="@string/enter_password"/>
+            android:hint="@string/enter_password"
+            android:inputType="textPassword"/>
+                                                                 
 
     </com.google.android.material.textfield.TextInputLayout>
 
