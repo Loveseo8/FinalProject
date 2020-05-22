@@ -1,5 +1,7 @@
 package rna.FinalProjectAliceandRoma;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -15,7 +17,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -94,11 +95,7 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
 
         for (DataSnapshot ds : dataSnapshot.child(user.getUid()).getChildren()) {
 
-            for (DataSnapshot dataSnapshot1 : ds.getChildren()) {
-
-                myWords.add(dataSnapshot1.getValue().toString());
-
-            }
+                myWords.add(ds.getKey());
 
         }
 
@@ -119,45 +116,74 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
 
         } else {
 
-            String id = databaseWords.push().getKey();
-            Word word = new Word(text_word);
-            databaseWords.child(user.getUid()).child(id).setValue(word);
+            databaseWords.child(user.getUid()).child(text_word).setValue(text_word);
+            editTextWord.setText("");
 
         }
+
+    }
+
+    private void showUpdateDeleteDialog(final String word) {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getContext());
+        LayoutInflater layoutInflater = getLayoutInflater();
+        final View dialogView = layoutInflater.inflate(R.layout.update_data_dialog, null);
+        dialogBuilder.setView(dialogView);
+
+        final EditText editWord = (EditText) dialogView.findViewById(R.id.edit_word);
+        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.button_update_word);
+        final Button buttonDelete = (Button) dialogView.findViewById(R.id.button_delete_Word);
+
+        dialogBuilder.setTitle(word);
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("words").child(user.getUid()).child(word);
+                databaseReference.removeValue();
+
+                String text_word = editWord.getText().toString().trim();
+
+                if (TextUtils.isEmpty(text_word)) {
+
+                    editTextWord.setError("Enter word!");
+                    editTextWord.requestFocus();
+
+                } else {
+
+                    databaseWords.child(user.getUid()).child(text_word).setValue(text_word);
+                    editTextWord.setText("");
+
+                }
+
+                b.dismiss();
+
+            }
+        });
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("words").child(user.getUid()).child(word);
+                databaseReference.removeValue();
+                b.dismiss();
+
+            }
+        });
+
+
 
     }
 
     @Override
     public void onItemClick(View view, int position) {
 
-        Toast.makeText(getContext(), "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_LONG).show();
+        showUpdateDeleteDialog(databaseWords.child(user.getUid()).child(adapter.getItem(position)).getKey());
 
     }
 
-}
-
-class Word {
-
-    String word;
-
-    public Word() {
-    }
-
-    public Word(String word) {
-
-        this.word = word;
-
-    }
-
-    public String getWord() {
-
-        return word;
-
-    }
-
-    public void setWord(String word) {
-
-        this.word = word;
-
-    }
 }
