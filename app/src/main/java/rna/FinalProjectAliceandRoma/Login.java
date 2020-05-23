@@ -16,7 +16,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Login extends AppCompatActivity {
+public class
+Login extends AppCompatActivity {
 
     public EditText login_email, login_password;
     Button button_login;
