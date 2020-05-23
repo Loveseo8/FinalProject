@@ -1,5 +1,6 @@
 package rna.FinalProjectAliceandRoma;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -97,6 +98,8 @@ public class TestsListFragment extends Fragment implements RecyclerViewAdapter.I
     public void onItemClick(View view, int position) {
 
         Toast.makeText(getContext(), "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_LONG).show();
+        Intent i = new Intent(getActivity(), TestView.class);
+        startActivity(i);
 
     }
 }

@@ -32,9 +32,8 @@
             android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_margin="15dp"
-            android:hint="@string/enter_email"
             style="@style/Widget.AppCompat.TextView"
+            android:hint="@string/enter_email"
             android:inputType="textEmailAddress"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -50,10 +49,8 @@
             android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:hint="@string/enter_password"
             style="@style/Widget.AppCompat.TextView"
+            android:hint="@string/enter_password"
             android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
