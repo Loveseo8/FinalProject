@@ -16,7 +16,7 @@ public class BooksView extends AppCompatActivity {
         setContentView(R.layout.book_view_activity);
 
         pdf_view = (WebView) findViewById(R.id.book_view);
-        pdf_view.loadUrl("file:///android_asset/topics/" + getIntent().getExtras().getString("title") + ".html");
+        pdf_view.loadUrl("file:///android_asset/booksTopics/" + getIntent().getExtras().getString("title") + ".html");
 
     }
 }

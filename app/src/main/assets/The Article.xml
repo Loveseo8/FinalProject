@@ -1,0 +1,21 @@
+<tests>
+
+    <test>The Article</test>
+    <question>This is___best beach in the country</question>
+    <question>This is___best restaurant in the country</question>
+    <question>This is___best cafe in the country</question>
+    <question>This is___best shop in the country</question>
+    <question>This is___best market in the country</question>
+
+    <option>a</option>
+    <option>an</option>
+    <option>the</option>
+    <option>-</option>
+
+    <rightAnswer>the</rightAnswer>
+    <rightAnswer>the</rightAnswer>
+    <rightAnswer>the</rightAnswer>
+    <rightAnswer>the</rightAnswer>
+    <rightAnswer>the</rightAnswer>
+
+</tests>
