@@ -6,11 +6,18 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class TestResult extends AppCompatActivity {
 
     String result;
     TextView testResult;
     Toolbar toolbar;
+    DatabaseReference databaseResults;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,18 +26,28 @@ public class TestResult extends AppCompatActivity {
 
         init();
 
+        databaseResults = FirebaseDatabase.getInstance().getReference("tests");
+
         result = getIntent().getExtras().getString("result");
-        testResult = (TextView) findViewById(R.id.testResult);
+        testResult = findViewById(R.id.testResult);
         testResult.setText(result);
+
+        addResult();
+
+    }
+
+    private void addResult() {
+
+        databaseResults.child(user.getUid()).child(getIntent().getExtras().getString("title").trim()).setValue(getIntent().getExtras().getString("result").trim());
 
     }
 
     private void init() {
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Test Result");
+        getSupportActionBar().setTitle(getIntent().getExtras().getString("title"));
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

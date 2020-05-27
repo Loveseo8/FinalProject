@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -50,13 +52,13 @@ public class TestView extends AppCompatActivity {
         List<String> userAnswers = new ArrayList<>();
         List<String> rightAnswers = new ArrayList<>();
 
-        question = (TextView) findViewById(R.id.questionView);
-        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-        firstOption = (RadioButton) findViewById(R.id.firstOption);
-        secondOption = (RadioButton) findViewById(R.id.secondOption);
-        thirdOption = (RadioButton) findViewById(R.id.thirdOption);
-        fourthOption = (RadioButton) findViewById(R.id.fourthOption);
-        next = (Button) findViewById(R.id.button_next);
+        question = findViewById(R.id.questionView);
+        radioGroup = findViewById(R.id.radioGroup);
+        firstOption = findViewById(R.id.firstOption);
+        secondOption = findViewById(R.id.secondOption);
+        thirdOption = findViewById(R.id.thirdOption);
+        fourthOption = findViewById(R.id.fourthOption);
+        next = findViewById(R.id.button_next);
 
         InputStream inputStream = null;
         try {
@@ -132,6 +134,27 @@ public class TestView extends AppCompatActivity {
         thirdOption.setText(options.get(2));
         fourthOption.setText(options.get(3));
 
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                switch (i) {
+
+
+                    case -1:
+
+                        break;
+
+                    case R.id.firstOption:
+
+                        Snackbar snackbar = Snackbar.make(findViewById(R.id.test_view_layout), firstOption.getText(), Snackbar.LENGTH_LONG);
+                        snackbar.show();
+
+                }
+
+            }
+        });
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -157,7 +180,8 @@ public class TestView extends AppCompatActivity {
                 } else if (count == 5) {
 
                     Intent i = new Intent(TestView.this, TestResult.class);
-                    i.putExtra("result", "100%");
+                    i.putExtra("title", getIntent().getExtras().getString("title"));
+                    i.putExtra("result", "50%");
                     startActivity(i);
 
                 }
@@ -168,7 +192,7 @@ public class TestView extends AppCompatActivity {
 
     private void init() {
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getIntent().getExtras().getString("title"));
