@@ -97,8 +97,8 @@ public class TestsListFragment extends Fragment implements RecyclerViewAdapter.I
     @Override
     public void onItemClick(View view, int position) {
 
-        Toast.makeText(getContext(), "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_LONG).show();
         Intent i = new Intent(getActivity(), TestView.class);
+        i.putExtra("title", adapter.getItem(position));
         startActivity(i);
 
     }

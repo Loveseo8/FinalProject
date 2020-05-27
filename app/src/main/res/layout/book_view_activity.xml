@@ -6,6 +6,8 @@
     android:gravity="center"
     android:orientation="vertical">
 
+    <include layout="@layout/toolbar"/>
+
     <WebView
         android:id="@+id/book_view"
         android:layout_width="match_parent"
