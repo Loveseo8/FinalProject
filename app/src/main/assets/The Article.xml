@@ -1,11 +1,12 @@
 <tests>
 
     <test>The Article</test>
-    <question>This is___best beach in the country</question>
-    <question>This is___best restaurant in the country</question>
-    <question>This is___best cafe in the country</question>
-    <question>This is___best shop in the country</question>
-    <question>This is___best market in the country</question>
+    <question>This is___best cafe in the town</question>
+    <question>Sasha Sloan is___American singer-songwriter based in Los Angeles, California
+    </question>
+    <question>What__beautiful day!</question>
+    <question>You need to take___more care with your spelling</question>
+    <question>Many animals were left homeless as___result of bushfire</question>
 
     <option>a</option>
     <option>an</option>
@@ -13,9 +14,9 @@
     <option>-</option>
 
     <rightAnswer>the</rightAnswer>
-    <rightAnswer>a</rightAnswer>
     <rightAnswer>an</rightAnswer>
-    <rightAnswer>the</rightAnswer>
+    <rightAnswer>a</rightAnswer>
     <rightAnswer>-</rightAnswer>
+    <rightAnswer>a</rightAnswer>
 
 </tests>

@@ -35,7 +35,7 @@ public class TestView extends AppCompatActivity {
     RadioButton thirdOption;
     RadioButton fourthOption;
     Button next;
-    int rightUserAnswersCount = 0;
+    double rightUserAnswersCount = 0;
     int count = 0;
     Toolbar toolbar;
 
@@ -190,9 +190,12 @@ public class TestView extends AppCompatActivity {
 
                     }
 
+                    rightUserAnswersCount = rightUserAnswersCount / 5 * 100;
+                    int result = (int) Math.floor(rightUserAnswersCount);
+
                     Intent i = new Intent(TestView.this, TestResult.class);
                     i.putExtra("title", getIntent().getExtras().getString("title"));
-                    i.putExtra("result", (rightUserAnswersCount / 5) * 100 + "%");
+                    i.putExtra("result", result + "%");
                     startActivity(i);
 
                 }
