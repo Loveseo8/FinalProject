@@ -40,15 +40,13 @@ public class BottomNavigation extends AppCompatActivity {
             }
         };
 
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigation);
+        bottomNavigationView = findViewById(R.id.bottomNavigation);
 
         loadFragment(new BooksListFragment());
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
-
-            {
-                @Override
-                public boolean onNavigationItemSelected (@NonNull MenuItem item){
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 Fragment fragment = null;
 
@@ -72,7 +70,7 @@ public class BottomNavigation extends AppCompatActivity {
                 return loadFragment(fragment);
 
             }
-            });
+        });
 
     }
 

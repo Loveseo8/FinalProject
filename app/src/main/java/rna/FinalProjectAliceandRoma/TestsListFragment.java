@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -85,7 +84,7 @@ public class TestsListFragment extends Fragment implements RecyclerViewAdapter.I
 
         }
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new RecyclerViewAdapter(tests, getContext());

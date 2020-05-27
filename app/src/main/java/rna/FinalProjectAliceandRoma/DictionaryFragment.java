@@ -1,6 +1,5 @@
 package rna.FinalProjectAliceandRoma;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,8 +48,8 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
 
         databaseWords = FirebaseDatabase.getInstance().getReference("words");
 
-        editTextWord = (EditText) view.findViewById(R.id.editTextWord);
-        add = (Button) view.findViewById(R.id.button_add_word);
+        editTextWord = view.findViewById(R.id.editTextWord);
+        add = view.findViewById(R.id.button_add_word);
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +60,7 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
             }
         });
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -138,9 +136,9 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
         final View dialogView = layoutInflater.inflate(R.layout.update_data_dialog, null);
         dialogBuilder.setView(dialogView);
 
-        final EditText editWord = (EditText) dialogView.findViewById(R.id.edit_word);
-        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.button_update_word);
-        final Button buttonDelete = (Button) dialogView.findViewById(R.id.button_delete_Word);
+        final EditText editWord = dialogView.findViewById(R.id.edit_word);
+        final Button buttonUpdate = dialogView.findViewById(R.id.button_update_word);
+        final Button buttonDelete = dialogView.findViewById(R.id.button_delete_Word);
 
         dialogBuilder.setTitle(word);
         final AlertDialog b = dialogBuilder.create();
@@ -201,7 +199,12 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
     @Override
     public void onItemClick(View view, int position) {
 
-        showUpdateDeleteDialog(databaseWords.child(user.getUid()).child(adapter.getItem(position)).getKey());
+        String selected = adapter.getItem(position);
+
+        String[] title = selected.split("-");
+        String selected_title = title[0];
+
+        showUpdateDeleteDialog(databaseWords.child(user.getUid()).child(selected_title).getKey());
 
     }
 

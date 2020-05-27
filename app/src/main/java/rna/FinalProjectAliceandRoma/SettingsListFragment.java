@@ -46,7 +46,7 @@ public class SettingsListFragment extends Fragment implements RecyclerViewAdapte
         settings.add("Delete Account");
         settings.add("Logout");
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new RecyclerViewAdapter(settings, getContext());
@@ -62,7 +62,7 @@ public class SettingsListFragment extends Fragment implements RecyclerViewAdapte
 
             case "Logout":
 
-                new AlertDialog.Builder(getContext()).setTitle(R.string.logout).setMessage(R.string.are_you_sure_you_want_to_log_out).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                new AlertDialog.Builder(getContext()).setCancelable(false).setTitle(R.string.logout).setMessage(R.string.are_you_sure_you_want_to_log_out).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 
 
                     @Override
@@ -80,7 +80,7 @@ public class SettingsListFragment extends Fragment implements RecyclerViewAdapte
 
             case "Change Email":
 
-                new AlertDialog.Builder(getContext()).setTitle(R.string.change_email).setMessage(R.string.are_you_sure_you_want_to_change_email ).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                new AlertDialog.Builder(getContext()).setCancelable(false).setTitle(R.string.change_email).setMessage(R.string.are_you_sure_you_want_to_change_email).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 
 
                     @Override
@@ -97,7 +97,7 @@ public class SettingsListFragment extends Fragment implements RecyclerViewAdapte
 
             case "Change Password":
 
-                new AlertDialog.Builder(getContext()).setTitle(R.string.change_password).setMessage(R.string.are_you_sure_you_want_to_change_password).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                new AlertDialog.Builder(getContext()).setCancelable(false).setTitle(R.string.change_password).setMessage(R.string.are_you_sure_you_want_to_change_password).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 
 
                     @Override
@@ -114,7 +114,7 @@ public class SettingsListFragment extends Fragment implements RecyclerViewAdapte
 
             case "Delete Account":
 
-                new AlertDialog.Builder(getContext()).setTitle(R.string.delete_account).setMessage(R.string.are_you_sure_you_want_to_delete_account).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                new AlertDialog.Builder(getContext()).setCancelable(false).setTitle(R.string.delete_account).setMessage(R.string.are_you_sure_you_want_to_delete_account).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 
 
                    @Override

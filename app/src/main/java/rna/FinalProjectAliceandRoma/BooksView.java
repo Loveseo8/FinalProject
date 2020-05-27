@@ -19,14 +19,14 @@ public class BooksView extends AppCompatActivity {
 
         init();
 
-        pdf_view = (WebView) findViewById(R.id.book_view);
+        pdf_view = findViewById(R.id.book_view);
         pdf_view.loadUrl("file:///android_asset/booksTopics/" + getIntent().getExtras().getString("title") + ".html");
 
     }
 
     private void init() {
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getIntent().getExtras().getString("title"));

@@ -2,31 +2,54 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp">
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            style="@style/Widget.AppCompat.TextView"/>
+            android:layout_height="wrap_content"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input"
+                style="@style/Widget.AppCompat.TextView"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <info.hoang8f.widget.FButton
-            android:id="@+id/button_next"  
+            android:id="@+id/button_next"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"                         
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:text="Next"
             android:textColor="@android:color/white"/>
 
     </LinearLayout>
+
+</LinearLayout>
