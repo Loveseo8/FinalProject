@@ -122,7 +122,7 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
 
             String [] title = text_word.split("-");
             String word = title[0];
-            databaseWords.child(user.getUid()).child(word).setValue(text_word);
+            databaseWords.child(user.getUid()).child(word.trim()).setValue(text_word);
             editTextWord.setText("");
 
         }
@@ -162,15 +162,7 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
 
                 } else {
 
-                    String [] title = text_word.split("-");
-                    String word_title = title[0];
-
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("words").child(user.getUid()).child(word_title);
-                    databaseReference.removeValue();
-
-                    databaseWords.child(user.getUid()).child(word_title).setValue(text_word);
-                    editWord.setText("");
-
+                    databaseWords.child(user.getUid()).child(word.trim()).setValue(text_word.trim());
                 }
 
                 b.dismiss();
@@ -185,7 +177,7 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
                 String [] title = word.split("-");
                 String word_title = title[0];
 
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("words").child(user.getUid()).child(word_title);
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("words").child(user.getUid()).child(word_title.trim());
                 databaseReference.removeValue();
                 b.dismiss();
 
@@ -204,7 +196,7 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
         String[] title = selected.split("-");
         String selected_title = title[0];
 
-        showUpdateDeleteDialog(databaseWords.child(user.getUid()).child(selected_title).getKey());
+        showUpdateDeleteDialog(databaseWords.child(user.getUid()).child(selected_title.trim()).getKey());
 
     }
 
