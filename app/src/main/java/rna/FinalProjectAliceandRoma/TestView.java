@@ -9,6 +9,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -35,11 +36,14 @@ public class TestView extends AppCompatActivity {
     RadioButton fourthOption;
     Button next;
     int count = 0;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_view);
+
+        init();
 
         final List<String> questions = new ArrayList<>();
         List<String> options = new ArrayList<>();
@@ -161,4 +165,16 @@ public class TestView extends AppCompatActivity {
         });
 
     }
+
+    private void init() {
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getIntent().getExtras().getString("title"));
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
 }

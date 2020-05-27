@@ -3,59 +3,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".TestView">
 
-    <TextView
-        android:id="@+id/questionView"
-        style="@style/TextAppearance.MaterialComponents.Body1"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textStyle="bold"
-        android:layout_margin="50dp"/>
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/firstOption"
+        <TextView
+            android:id="@+id/questionView"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:layout_margin="50dp"/>
 
-        <RadioButton
-            android:id="@+id/secondOption"
+        <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
-        <RadioButton
-            android:id="@+id/thirdOption"
+            android:layout_margin="10dp">
+
+            <RadioButton
+                android:id="@+id/firstOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
+
+            <RadioButton
+                android:id="@+id/secondOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
+            <RadioButton
+                android:id="@+id/thirdOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
+            <RadioButton
+                android:id="@+id/fourthOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
+        </RadioGroup>
+
+        <info.hoang8f.widget.FButton
+            android:id="@+id/button_next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
-        <RadioButton
-            android:id="@+id/fourthOption"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
-    </RadioGroup>
+            android:layout_margin="20dp"
+            android:text="@string/next"
+            android:layout_gravity="bottom"
+            android:textColor="@android:color/white"/>
 
-    <info.hoang8f.widget.FButton
-        android:id="@+id/button_next"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="@string/next"
-        android:textColor="@android:color/white"/>
-
+    </LinearLayout>
 
 </LinearLayout>

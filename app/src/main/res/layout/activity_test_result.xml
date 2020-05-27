@@ -5,23 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TestResult"
-    android:gravity="center"
     android:orientation="vertical">
 
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="@string/your_result_is"
-        style="@style/TextAppearance.MaterialComponents.Body1"
-        android:gravity="center_horizontal"/>
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
 
-    <TextView
-        android:id="@+id/testResult"
-        style="@style/TextAppearance.MaterialComponents.Headline1"
-        android:layout_width="474dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:gravity="center_horizontal" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="@string/your_result_is"
+            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/testResult"
+            style="@style/TextAppearance.MaterialComponents.Headline1"
+            android:layout_width="474dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:gravity="center_horizontal" />
+
+    </LinearLayout>
 
 </LinearLayout>
