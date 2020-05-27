@@ -12,13 +12,12 @@
         android:layout_margin="15dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/enter_password"
+            android:id="@+id/input"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            style="@style/Widget.AppCompat.TextView"
-            android:inputType="textPassword"/>
+            style="@style/Widget.AppCompat.TextView"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

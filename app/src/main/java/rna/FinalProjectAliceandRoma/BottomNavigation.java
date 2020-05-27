@@ -1,5 +1,7 @@
 package rna.FinalProjectAliceandRoma;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -91,6 +93,48 @@ public class BottomNavigation extends AppCompatActivity {
 
         super.onStart();
         firebaseAuth.addAuthStateListener(authStateListener);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Exit");
+        builder.setCancelable(false);
+        builder.setMessage("Are you sure you want to quit?");
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                finishAffinity();
+
+            }
+        });
+        builder.setNeutralButton(R.string.no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                dialogInterface.cancel();
+
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
 
     }
 }

@@ -69,6 +69,7 @@ public class SettingsListFragment extends Fragment implements RecyclerViewAdapte
                     public void onClick(DialogInterface dialog, int which) {
 
                         FirebaseAuth.getInstance().signOut();
+
                         Intent i = new Intent(getActivity(), Login.class);
                         startActivity(i);
 
