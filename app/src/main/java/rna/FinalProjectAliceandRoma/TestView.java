@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -137,66 +139,75 @@ public class TestView extends AppCompatActivity {
             public void onClick(View view) {
 
                 int selectedButton = radioGroup.getCheckedRadioButtonId();
-                RadioButton selected = findViewById(selectedButton);
-                String userAnswer = selected.getText().toString();
 
-                count ++;
+                if (selectedButton == -1) {
 
-                if (count == 1) {
+                    Snackbar.make(findViewById(R.id.test_view_layout), "Выберите один из предложенных вариантов ответа!", Snackbar.LENGTH_LONG).show();
 
-                    question.setText(questions.get(1));
+                } else {
 
-                    if (userAnswer.equals(rightAnswers.get(0))) {
+                    RadioButton selected = findViewById(selectedButton);
+                    String userAnswer = selected.getText().toString();
 
-                        rightUserAnswersCount++;
+                    count++;
+
+                    if (count == 1) {
+
+                        question.setText(questions.get(1));
+
+                        if (userAnswer.equals(rightAnswers.get(0))) {
+
+                            rightUserAnswersCount++;
+
+                        }
+
+                    } else if (count == 2) {
+
+                        question.setText(questions.get(2));
+
+                        if (userAnswer.equals(rightAnswers.get(1))) {
+
+                            rightUserAnswersCount++;
+
+                        }
+
+                    } else if (count == 3) {
+
+                        question.setText(questions.get(3));
+
+                        if (userAnswer.equals(rightAnswers.get(2))) {
+
+                            rightUserAnswersCount++;
+
+                        }
+
+                    } else if (count == 4) {
+
+                        question.setText(questions.get(4));
+
+                        if (userAnswer.equals(rightAnswers.get(3))) {
+
+                            rightUserAnswersCount++;
+
+                        }
+
+                    } else if (count == 5) {
+
+                        if (userAnswer.equals(rightAnswers.get(4))) {
+
+                            rightUserAnswersCount++;
+
+                        }
+
+                        rightUserAnswersCount = rightUserAnswersCount / 5 * 100;
+                        int result = (int) Math.floor(rightUserAnswersCount);
+
+                        Intent i = new Intent(TestView.this, TestResult.class);
+                        i.putExtra("title", getIntent().getExtras().getString("title"));
+                        i.putExtra("result", result + "%");
+                        startActivity(i);
 
                     }
-
-                } else if (count == 2) {
-
-                    question.setText(questions.get(2));
-
-                    if (userAnswer.equals(rightAnswers.get(1))) {
-
-                        rightUserAnswersCount++;
-
-                    }
-
-                } else if (count == 3) {
-
-                    question.setText(questions.get(3));
-
-                    if (userAnswer.equals(rightAnswers.get(2))) {
-
-                        rightUserAnswersCount++;
-
-                    }
-
-                } else if (count == 4) {
-
-                    question.setText(questions.get(4));
-
-                    if (userAnswer.equals(rightAnswers.get(3))) {
-
-                        rightUserAnswersCount++;
-
-                    }
-
-                } else if (count == 5) {
-
-                    if (userAnswer.equals(rightAnswers.get(4))) {
-
-                        rightUserAnswersCount++;
-
-                    }
-
-                    rightUserAnswersCount = rightUserAnswersCount / 5 * 100;
-                    int result = (int) Math.floor(rightUserAnswersCount);
-
-                    Intent i = new Intent(TestView.this, TestResult.class);
-                    i.putExtra("title", getIntent().getExtras().getString("title"));
-                    i.putExtra("result", result + "%");
-                    startActivity(i);
 
                 }
             }

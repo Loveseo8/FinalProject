@@ -1,5 +1,6 @@
 package rna.FinalProjectAliceandRoma;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -33,6 +34,14 @@ public class TestResult extends AppCompatActivity {
         testResult.setText(result);
 
         addResult();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        Intent i = new Intent(getApplicationContext(), BottomNavigation.class);
+        startActivity(i);
 
     }
 
