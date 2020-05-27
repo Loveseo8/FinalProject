@@ -11,8 +11,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -37,6 +35,7 @@ public class TestView extends AppCompatActivity {
     RadioButton thirdOption;
     RadioButton fourthOption;
     Button next;
+    int rightUserAnswersCount = 0;
     int count = 0;
     Toolbar toolbar;
 
@@ -49,8 +48,7 @@ public class TestView extends AppCompatActivity {
 
         final List<String> questions = new ArrayList<>();
         List<String> options = new ArrayList<>();
-        List<String> userAnswers = new ArrayList<>();
-        List<String> rightAnswers = new ArrayList<>();
+        final List<String> rightAnswers = new ArrayList<>();
 
         question = findViewById(R.id.questionView);
         radioGroup = findViewById(R.id.radioGroup);
@@ -134,30 +132,13 @@ public class TestView extends AppCompatActivity {
         thirdOption.setText(options.get(2));
         fourthOption.setText(options.get(3));
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-
-                switch (i) {
-
-
-                    case -1:
-
-                        break;
-
-                    case R.id.firstOption:
-
-                        Snackbar snackbar = Snackbar.make(findViewById(R.id.test_view_layout), firstOption.getText(), Snackbar.LENGTH_LONG);
-                        snackbar.show();
-
-                }
-
-            }
-        });
-
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                int selectedButton = radioGroup.getCheckedRadioButtonId();
+                RadioButton selected = findViewById(selectedButton);
+                String userAnswer = selected.getText().toString();
 
                 count ++;
 
@@ -165,23 +146,53 @@ public class TestView extends AppCompatActivity {
 
                     question.setText(questions.get(1));
 
+                    if (userAnswer.equals(rightAnswers.get(0))) {
+
+                        rightUserAnswersCount++;
+
+                    }
+
                 } else if (count == 2) {
 
                     question.setText(questions.get(2));
+
+                    if (userAnswer.equals(rightAnswers.get(1))) {
+
+                        rightUserAnswersCount++;
+
+                    }
 
                 } else if (count == 3) {
 
                     question.setText(questions.get(3));
 
+                    if (userAnswer.equals(rightAnswers.get(2))) {
+
+                        rightUserAnswersCount++;
+
+                    }
+
                 } else if (count == 4) {
 
                     question.setText(questions.get(4));
 
+                    if (userAnswer.equals(rightAnswers.get(3))) {
+
+                        rightUserAnswersCount++;
+
+                    }
+
                 } else if (count == 5) {
+
+                    if (userAnswer.equals(rightAnswers.get(4))) {
+
+                        rightUserAnswersCount++;
+
+                    }
 
                     Intent i = new Intent(TestView.this, TestResult.class);
                     i.putExtra("title", getIntent().getExtras().getString("title"));
-                    i.putExtra("result", "50%");
+                    i.putExtra("result", (rightUserAnswersCount / 5) * 100 + "%");
                     startActivity(i);
 
                 }
