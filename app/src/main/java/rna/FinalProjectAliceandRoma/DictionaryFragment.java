@@ -33,7 +33,7 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
     DatabaseReference databaseWords;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     RecyclerViewAdapter adapter;
-    List<String> myWords = new ArrayList<>();
+    List<String> userWords = new ArrayList<>();
     RecyclerView recyclerView;
 
     @Override
@@ -63,6 +63,9 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new RecyclerViewAdapter(userWords, getContext());
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
 
     }
 
@@ -88,20 +91,19 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
 
     private void showData(DataSnapshot dataSnapshot) {
 
-        myWords.clear();
+        userWords.clear();
 
 
         for (DataSnapshot ds : dataSnapshot.child(user.getUid()).getChildren()) {
 
 
-                myWords.add(ds.getValue().toString());
+            userWords.add(ds.getValue().toString());
 
         }
 
-        adapter = new RecyclerViewAdapter(myWords, getContext());
+        adapter = new RecyclerViewAdapter(userWords, getContext());
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
-
     }
 
     private void addWord() {
@@ -110,19 +112,19 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
 
         if (TextUtils.isEmpty(text_word)) {
 
-            editTextWord.setError("Enter word!");
+            editTextWord.setError("Введите слово!");
             editTextWord.requestFocus();
 
         } else if (!text_word.contains("-")) {
 
-            editTextWord.setError("Your entry should contain - sign");
+            editTextWord.setError("Ваша запись должна содержать тире!");
             editTextWord.requestFocus();
 
         } else {
 
             String [] title = text_word.split("-");
             String word = title[0];
-            databaseWords.child(user.getUid()).child(word.trim().toLowerCase()).setValue(text_word);
+            databaseWords.child(user.getUid()).child(word.trim()).setValue(text_word);
             editTextWord.setText("");
 
         }
@@ -152,17 +154,30 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
 
                 if (TextUtils.isEmpty(text_word)) {
 
-                    editWord.setError("Enter word!");
+                    editWord.setError("Введите слово!");
                     editWord.requestFocus();
 
                 } else if (!text_word.contains("-")) {
 
-                    editWord.setError("Your entry should contain - sign");
+                    editWord.setError("Ваша запись должна содержать тире!");
                     editWord.requestFocus();
 
                 } else {
 
-                    databaseWords.child(user.getUid()).child(word.trim().toLowerCase()).setValue(text_word.trim());
+                    String[] title = text_word.split("-");
+                    String word_title = title[0];
+
+                    if (word_title.trim().equals(word))
+                        databaseWords.child(user.getUid()).child(word.trim()).setValue(text_word.trim());
+
+                    else {
+
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("words").child(user.getUid()).child(word.trim());
+                        databaseReference.removeValue();
+
+                        databaseWords.child(user.getUid()).child(word_title.trim()).setValue(text_word.trim());
+
+                    }
                 }
 
                 b.dismiss();
@@ -177,7 +192,7 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
                 String [] title = word.split("-");
                 String word_title = title[0];
 
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("words").child(user.getUid()).child(word_title.trim().toLowerCase());
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("words").child(user.getUid()).child(word_title.trim());
                 databaseReference.removeValue();
                 b.dismiss();
 

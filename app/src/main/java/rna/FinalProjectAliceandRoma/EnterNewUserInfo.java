@@ -18,10 +18,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class EnterPassword extends AppCompatActivity {
+public class EnterNewUserInfo extends AppCompatActivity {
 
-    EditText enter;
-    Button next;
+    EditText editTextDataToChange;
+    Button button_next;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     Toolbar toolbar;
 
@@ -32,26 +32,26 @@ public class EnterPassword extends AppCompatActivity {
 
         init();
 
-        enter = findViewById(R.id.input);
-        next = findViewById(R.id.button_next);
+        editTextDataToChange = findViewById(R.id.input);
+        button_next = findViewById(R.id.button_next);
 
         switch (getIntent().getExtras().getString("change")) {
 
-            case "email":
+            case "почту":
 
-                enter.setHint(R.string.enter_new_email);
-                enter.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                editTextDataToChange.setHint(R.string.enter_new_email);
+                editTextDataToChange.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
-                next.setOnClickListener(new View.OnClickListener() {
+                button_next.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
-                        user.updateEmail(enter.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        user.updateEmail(editTextDataToChange.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
 
-                                    Intent i = new Intent(EnterPassword.this, Login.class);
+                                    Intent i = new Intent(EnterNewUserInfo.this, Login.class);
                                     startActivity(i);
 
                                 }
@@ -64,21 +64,21 @@ public class EnterPassword extends AppCompatActivity {
 
                 break;
 
-            case "password":
+            case "пароль":
 
-                enter.setHint(R.string.enter_new_password);
-                enter.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                editTextDataToChange.setHint(R.string.enter_new_password);
+                editTextDataToChange.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
 
-                next.setOnClickListener(new View.OnClickListener() {
+                button_next.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
-                        user.updatePassword(enter.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        user.updatePassword(editTextDataToChange.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
 
-                                    Intent i = new Intent(EnterPassword.this, Login.class);
+                                    Intent i = new Intent(EnterNewUserInfo.this, Login.class);
                                     startActivity(i);
 
                                 }
@@ -99,7 +99,7 @@ public class EnterPassword extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Change " + getIntent().getExtras().getString("change"));
+        getSupportActionBar().setTitle("Изменить " + getIntent().getExtras().getString("change"));
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -109,16 +109,16 @@ public class EnterPassword extends AppCompatActivity {
     public void onBackPressed() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Change " + getIntent().getExtras().getString("change"));
+        builder.setTitle("Изменить " + getIntent().getExtras().getString("change"));
         builder.setCancelable(false);
-        builder.setMessage("You did`t change your " + getIntent().getExtras().getString("change") + ". " + "Are you sure you want to quit?");
+        builder.setMessage("Вы не изменили " + getIntent().getExtras().getString("change") + ". " + "Уверены, что хотите выйти?");
         builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                EnterPassword.super.onBackPressed();
+                EnterNewUserInfo.super.onBackPressed();
 
             }
         });

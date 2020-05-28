@@ -1,20 +1,58 @@
 <tests>
 
-    <question>Elizabeth is more careful___Liam</question>
-    <question>Formula Rossa is___world`s fastest roller coaster</question>
-    <question>What__beautiful day!</question>
-    <question>You need to take___more care with your spelling</question>
-    <question>Many animals were left homeless as___result of bushfire</question>
-
     <option>than</option>
     <option>-</option>
     <option>the</option>
     <option>more</option>
 
-    <rightAnswer>than</rightAnswer>
-    <rightAnswer>the</rightAnswer>
-    <rightAnswer>a</rightAnswer>
-    <rightAnswer>-</rightAnswer>
-    <rightAnswer>a</rightAnswer>
+    <question0>Elizabeth is more careful___Liam</question0>
+
+    <question0>than</question0>
+    <question0>-</question0>
+    <question0>the</question0>
+    <question0>more</question0>
+
+    <question0>than</question0>
+
+    <question1>Formula Rossa is___world`s fastest roller coaster
+    </question1>
+
+    <question1>the</question1>
+    <question1>than</question1>
+    <question1>more</question1>
+    <question1>-</question1>
+
+    <question1>the</question1>
+
+    <question2>Образуйте сравнительную степень от следующих прилагательных: good, large, hot,
+        little
+    </question2>
+
+    <question2>gooder, larger, hoter, less</question2>
+    <question2>better, larger, hoter, less</question2>
+    <question2>gooder, largger, hottes, littler</question2>
+    <question2>better, larger, hotter, less</question2>
+
+    <question2>better, larger, hotter, less</question2>
+
+    <question3>Our kitchen is___than bedroom</question3>
+
+    <question3>the smaller</question3>
+    <question3>more small</question3>
+    <question3>smaller</question3>
+    <question3>small</question3>
+
+    <question3>smaller</question3>
+
+    <question4>Образуйте превосходную степень от следующих прилагательных: beautiful, far, cold,
+        long
+    </question4>
+
+    <question4>the most beautiful, the farest, the coldest, the longest</question4>
+    <question4>the beautifulest, the farthest, the coldest, the longgest</question4>
+    <question4>the most beautiful, the farthest, the coldest, the longest</question4>
+    <question4>the most beautiful, the farthest, the most cold, the longest</question4>
+
+    <question4>the most beautiful, the farthest, the coldest, the longest</question4>
 
 </tests>

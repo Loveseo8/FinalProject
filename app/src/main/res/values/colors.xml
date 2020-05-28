@@ -4,6 +4,7 @@
     <color name="secondary">#F57C00</color>
     <color name="background">#C0C0C0</color>
     <color name="error">#E53935</color>
+    <color name="white">#FFFFFF</color>
 
     <color name="default_color">#3eadeb</color>
     <color name="default_shadow_color">#1976D2</color>

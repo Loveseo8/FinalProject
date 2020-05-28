@@ -2,6 +2,8 @@ package rna.FinalProjectAliceandRoma;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,10 +17,11 @@ import com.google.firebase.database.FirebaseDatabase;
 public class TestResult extends AppCompatActivity {
 
     String result;
-    TextView testResult;
+    TextView textViewResult;
     Toolbar toolbar;
     DatabaseReference databaseResults;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    Button buttonGoBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +33,21 @@ public class TestResult extends AppCompatActivity {
         databaseResults = FirebaseDatabase.getInstance().getReference("tests");
 
         result = getIntent().getExtras().getString("result");
-        testResult = findViewById(R.id.testResult);
-        testResult.setText(result);
+        textViewResult = findViewById(R.id.testResult);
+        textViewResult.setText(result);
+        buttonGoBack = findViewById(R.id.button_go_back);
 
         addResult();
+
+        buttonGoBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(getApplicationContext(), BottomNavigation.class);
+                startActivity(i);
+
+            }
+        });
 
     }
 

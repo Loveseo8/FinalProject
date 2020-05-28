@@ -44,7 +44,7 @@ public class SettingsListFragment extends Fragment implements RecyclerViewAdapte
         settings.add("Изменить пароль");
         settings.add("Результаты тестов");
         settings.add("Удалить аккаунт");
-        settings.add("Logout");
+        settings.add("Выйти");
 
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -67,9 +67,9 @@ public class SettingsListFragment extends Fragment implements RecyclerViewAdapte
 
                 break;
 
-            case "Logout":
+            case "Выйти":
 
-                new AlertDialog.Builder(getContext()).setCancelable(false).setTitle(R.string.logout).setMessage(R.string.are_you_sure_you_want_to_log_out).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                new AlertDialog.Builder(getContext()).setCancelable(false).setTitle("Выйти").setMessage(R.string.are_you_sure_you_want_to_log_out).setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 
 
                     @Override
@@ -93,8 +93,8 @@ public class SettingsListFragment extends Fragment implements RecyclerViewAdapte
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        Intent i = new Intent(getActivity(), EnterPassword.class);
-                        i.putExtra("change", "email");
+                        Intent i = new Intent(getActivity(), EnterNewUserInfo.class);
+                        i.putExtra("change", "почту");
                         startActivity(i);
 
                     }
@@ -110,8 +110,8 @@ public class SettingsListFragment extends Fragment implements RecyclerViewAdapte
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        Intent i = new Intent(getActivity(), EnterPassword.class);
-                        i.putExtra("change", "password");
+                        Intent i = new Intent(getActivity(), EnterNewUserInfo.class);
+                        i.putExtra("change", "пароль");
                         startActivity(i);
 
                     }

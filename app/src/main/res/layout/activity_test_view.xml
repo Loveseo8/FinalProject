@@ -33,10 +33,12 @@
             android:id="@+id/questionView"
             style="@style/TextAppearance.MaterialComponents.Body1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:textColor="@color/primary"
+            android:background="@drawable/question_bacgound"
             android:textStyle="bold"
-            android:layout_margin="20dp" />
+            android:layout_margin="15dp" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -47,34 +49,54 @@
             <RadioButton
                 android:id="@+id/firstOption"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_margin="10dp"
+                android:background="@drawable/test_buttons_background"
+                android:button="@null"
+                android:freezesText="true"
+                android:gravity="center"
+                android:textColor="@android:color/white"
                 style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
 
             <RadioButton
                 android:id="@+id/secondOption"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_margin="10dp"
+                android:gravity="center"
+                android:background="@drawable/test_buttons_background"
+                android:button="@null"
+                android:freezesText="true"
+                android:textColor="@android:color/white"
                 style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
             <RadioButton
                 android:id="@+id/thirdOption"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
+                android:gravity="center"
+                android:background="@drawable/test_buttons_background"
                 android:layout_margin="10dp"
+                android:button="@null"
+                android:freezesText="true"
+                android:textColor="@android:color/white"
                 style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
             <RadioButton
                 android:id="@+id/fourthOption"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_margin="10dp"
+                android:gravity="center"
+                android:background="@drawable/test_buttons_background"
+                android:button="@null"
+                android:freezesText="true"
+                android:textColor="@android:color/white"
                 style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
         </RadioGroup>
 
         <info.hoang8f.widget.FButton
             android:id="@+id/button_next"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:layout_margin="20dp"
             android:text="@string/next"
             android:layout_gravity="bottom"
