@@ -29,10 +29,10 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        login_email = (EditText) findViewById(R.id.login_email);
-        login_password = (EditText) findViewById(R.id.login_password);
-        button_login = (Button) findViewById(R.id.button_login);
-        signUp = (TextView) findViewById(R.id.textViewSignUp);
+        login_email = findViewById(R.id.login_email);
+        login_password = findViewById(R.id.login_password);
+        button_login = findViewById(R.id.button_login);
+        signUp = findViewById(R.id.textViewSignUp);
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,12 +58,12 @@ public class Login extends AppCompatActivity {
 
                 } else if (userEmail.isEmpty()) {
 
-                    login_email.setError("Check your email");
+                    login_email.setError("Введите почту!");
                     login_email.requestFocus();
 
                 } else if (userPassword.isEmpty()) {
 
-                    login_password.setError("Enter password!");
+                    login_password.setError("Введите пароль!");
                     login_password.requestFocus();
 
                 } else if (!(userEmail.isEmpty() && userPassword.isEmpty())) {
@@ -74,7 +74,7 @@ public class Login extends AppCompatActivity {
 
                             if (!task.isSuccessful()) {
 
-                                Snackbar snackbar = Snackbar.make(findViewById(R.id.login_layout), "Login is unsuccessful: " + task.getException().getMessage(), Snackbar.LENGTH_LONG);
+                                Snackbar snackbar = Snackbar.make(findViewById(R.id.login_layout), "Авторизация провалена : " + task.getException().getMessage(), Snackbar.LENGTH_LONG);
                                 snackbar.show();
 
                             } else startActivity(new Intent(Login.this, BottomNavigation.class));
@@ -84,7 +84,7 @@ public class Login extends AppCompatActivity {
 
                 } else {
 
-                    Snackbar snackbar = Snackbar.make(findViewById(R.id.login_layout), "Error!", Snackbar.LENGTH_LONG);
+                    Snackbar snackbar = Snackbar.make(findViewById(R.id.login_layout), "Ошибка!", Snackbar.LENGTH_LONG);
                     snackbar.show();
 
                 }

@@ -29,10 +29,10 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        get_email = (EditText) findViewById(R.id.input_email);
-        get_password = (EditText) findViewById(R.id.input_password);
-        get_signUp = (Button) findViewById(R.id.button_signUp);
-        signIn = (TextView) findViewById(R.id.textViewSignIn);
+        get_email = findViewById(R.id.input_email);
+        get_password = findViewById(R.id.input_password);
+        get_signUp = findViewById(R.id.button_signUp);
+        signIn = findViewById(R.id.textViewSignIn);
 
         get_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,17 +43,17 @@ public class SignUp extends AppCompatActivity {
 
                 if (emailID.isEmpty() && password.isEmpty()) {
 
-                    Snackbar snackbar = Snackbar.make(findViewById(R.id.sign_up_layout), "Fields Empty!", Snackbar.LENGTH_LONG);
+                    Snackbar snackbar = Snackbar.make(findViewById(R.id.sign_up_layout), "Поля пустые!", Snackbar.LENGTH_LONG);
                     snackbar.show();
 
                 } else if (emailID.isEmpty()) {
 
-                    get_email.setError("Check your email");
+                    get_email.setError("Введите почту!");
                     get_email.requestFocus();
 
                 } else if (password.isEmpty()) {
 
-                    get_password.setError("Set your password");
+                    get_password.setError("Введите пароль!");
                     get_password.requestFocus();
 
                 } else if (!(emailID.isEmpty() && password.isEmpty())) {
@@ -64,7 +64,7 @@ public class SignUp extends AppCompatActivity {
 
                             if (!task.isSuccessful()) {
 
-                                Snackbar snackbar = Snackbar.make(findViewById(R.id.sign_up_layout), "SignUp is unsuccessful: " + task.getException().getMessage(), Snackbar.LENGTH_LONG);
+                                Snackbar snackbar = Snackbar.make(findViewById(R.id.sign_up_layout), "Регистрация провалена : " + task.getException().getMessage(), Snackbar.LENGTH_LONG);
                                 snackbar.show();
 
                             } else {
@@ -78,7 +78,7 @@ public class SignUp extends AppCompatActivity {
 
                 } else {
 
-                    Snackbar snackbar = Snackbar.make(findViewById(R.id.sign_up_layout), "Error!", Snackbar.LENGTH_LONG);
+                    Snackbar snackbar = Snackbar.make(findViewById(R.id.sign_up_layout), "Ошибка!", Snackbar.LENGTH_LONG);
                     snackbar.show();
 
                 }

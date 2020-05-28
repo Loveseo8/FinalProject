@@ -37,7 +37,7 @@ public class EnterPassword extends AppCompatActivity {
 
         switch (getIntent().getExtras().getString("change")) {
 
-            case "email":
+            case "почту":
 
                 enter.setHint(R.string.enter_new_email);
                 enter.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
@@ -64,7 +64,7 @@ public class EnterPassword extends AppCompatActivity {
 
                 break;
 
-            case "password":
+            case "пароль":
 
                 enter.setHint(R.string.enter_new_password);
                 enter.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -99,7 +99,7 @@ public class EnterPassword extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Change " + getIntent().getExtras().getString("change"));
+        getSupportActionBar().setTitle("Изменить " + getIntent().getExtras().getString("change"));
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -109,9 +109,9 @@ public class EnterPassword extends AppCompatActivity {
     public void onBackPressed() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Change " + getIntent().getExtras().getString("change"));
+        builder.setTitle("Изменить " + getIntent().getExtras().getString("change"));
         builder.setCancelable(false);
-        builder.setMessage("You did`t change your " + getIntent().getExtras().getString("change") + ". " + "Are you sure you want to quit?");
+        builder.setMessage("Вы не изменили " + getIntent().getExtras().getString("change") + ". " + "Уверены, что хотите выйти?");
         builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 
 
