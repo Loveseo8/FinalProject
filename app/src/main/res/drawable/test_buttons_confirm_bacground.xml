@@ -8,6 +8,6 @@
 
     <stroke
         android:width="3dp"
-        android:color="@color/default_shadow_color" />
+        android:color="@color/primary" />
 
 </shape>

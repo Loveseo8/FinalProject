@@ -3,6 +3,7 @@ package rna.FinalProjectAliceandRoma;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +30,9 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+
+import static rna.FinalProjectAliceandRoma.R.color.primary;
+import static rna.FinalProjectAliceandRoma.R.color.white;
 
 public class TestView extends AppCompatActivity {
 
@@ -167,7 +171,66 @@ public class TestView extends AppCompatActivity {
         thirdOption.setText(question0.get(3));
         fourthOption.setText(question0.get(4));
 
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                int selectedButton = radioGroup.getCheckedRadioButtonId();
+
+                if (selectedButton == -1) {
+
+
+                } else {
+
+                    RadioButton selected = findViewById(selectedButton);
+                    int primaryID = getResources().getColor(primary);
+                    selected.setTextColor(primaryID);
+                    Drawable checkedID = getResources().getDrawable(R.drawable.test_buttons_confirm_bacground);
+                    selected.setBackground(checkedID);
+
+                    if (!firstOption.isChecked()) {
+
+                        int whiteID = getResources().getColor(white);
+                        firstOption.setTextColor(whiteID);
+                        Drawable uncheckedID = getResources().getDrawable(R.drawable.test_buttons_background);
+                        firstOption.setBackground(uncheckedID);
+
+                    }
+
+                    if (!secondOption.isChecked()) {
+
+                        int whiteID = getResources().getColor(white);
+                        secondOption.setTextColor(whiteID);
+                        Drawable uncheckedID = getResources().getDrawable(R.drawable.test_buttons_background);
+                        secondOption.setBackground(uncheckedID);
+
+                    }
+
+                    if (!thirdOption.isChecked()) {
+
+                        int whiteID = getResources().getColor(white);
+                        thirdOption.setTextColor(whiteID);
+                        Drawable uncheckedID = getResources().getDrawable(R.drawable.test_buttons_background);
+                        thirdOption.setBackground(uncheckedID);
+
+                    }
+
+                    if (!fourthOption.isChecked()) {
+
+                        int whiteID = getResources().getColor(white);
+                        fourthOption.setTextColor(whiteID);
+                        Drawable uncheckedID = getResources().getDrawable(R.drawable.test_buttons_background);
+                        fourthOption.setBackground(uncheckedID);
+
+                    }
+
+                }
+
+            }
+        });
+
         next.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
