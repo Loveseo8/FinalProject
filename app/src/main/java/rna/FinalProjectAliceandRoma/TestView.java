@@ -9,6 +9,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -34,25 +37,28 @@ public class TestView extends AppCompatActivity {
     RadioButton thirdOption;
     RadioButton fourthOption;
     Button next;
+    double rightUserAnswersCount = 0;
     int count = 0;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_view);
 
+        init();
+
         final List<String> questions = new ArrayList<>();
         List<String> options = new ArrayList<>();
-        List<String> userAnswers = new ArrayList<>();
-        List<String> rightAnswers = new ArrayList<>();
+        final List<String> rightAnswers = new ArrayList<>();
 
-        question = (TextView) findViewById(R.id.questionView);
-        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-        firstOption = (RadioButton) findViewById(R.id.firstOption);
-        secondOption = (RadioButton) findViewById(R.id.secondOption);
-        thirdOption = (RadioButton) findViewById(R.id.thirdOption);
-        fourthOption = (RadioButton) findViewById(R.id.fourthOption);
-        next = (Button) findViewById(R.id.button_next);
+        question = findViewById(R.id.questionView);
+        radioGroup = findViewById(R.id.radioGroup);
+        firstOption = findViewById(R.id.firstOption);
+        secondOption = findViewById(R.id.secondOption);
+        thirdOption = findViewById(R.id.thirdOption);
+        fourthOption = findViewById(R.id.fourthOption);
+        next = findViewById(R.id.button_next);
 
         InputStream inputStream = null;
         try {
@@ -132,33 +138,92 @@ public class TestView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                count ++;
+                int selectedButton = radioGroup.getCheckedRadioButtonId();
 
-                if (count == 1) {
+                if (selectedButton == -1) {
 
-                    question.setText(questions.get(1));
+                    Snackbar.make(findViewById(R.id.test_view_layout), "Выберите один из предложенных вариантов ответа!", Snackbar.LENGTH_LONG).show();
 
-                } else if (count == 2) {
+                } else {
 
-                    question.setText(questions.get(2));
+                    RadioButton selected = findViewById(selectedButton);
+                    String userAnswer = selected.getText().toString();
 
-                } else if (count == 3) {
+                    count++;
 
-                    question.setText(questions.get(3));
+                    if (count == 1) {
 
-                } else if (count == 4) {
+                        question.setText(questions.get(1));
 
-                    question.setText(questions.get(4));
+                        if (userAnswer.equals(rightAnswers.get(0))) {
 
-                } else if (count == 5) {
+                            rightUserAnswersCount++;
 
-                    Intent i = new Intent(TestView.this, TestResult.class);
-                    i.putExtra("result", "100%");
-                    startActivity(i);
+                        }
+
+                    } else if (count == 2) {
+
+                        question.setText(questions.get(2));
+
+                        if (userAnswer.equals(rightAnswers.get(1))) {
+
+                            rightUserAnswersCount++;
+
+                        }
+
+                    } else if (count == 3) {
+
+                        question.setText(questions.get(3));
+
+                        if (userAnswer.equals(rightAnswers.get(2))) {
+
+                            rightUserAnswersCount++;
+
+                        }
+
+                    } else if (count == 4) {
+
+                        question.setText(questions.get(4));
+
+                        if (userAnswer.equals(rightAnswers.get(3))) {
+
+                            rightUserAnswersCount++;
+
+                        }
+
+                    } else if (count == 5) {
+
+                        if (userAnswer.equals(rightAnswers.get(4))) {
+
+                            rightUserAnswersCount++;
+
+                        }
+
+                        rightUserAnswersCount = rightUserAnswersCount / 5 * 100;
+                        int result = (int) Math.floor(rightUserAnswersCount);
+
+                        Intent i = new Intent(TestView.this, TestResult.class);
+                        i.putExtra("title", getIntent().getExtras().getString("title"));
+                        i.putExtra("result", result + "%");
+                        startActivity(i);
+
+                    }
 
                 }
             }
         });
 
     }
+
+    private void init() {
+
+        toolbar = findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getIntent().getExtras().getString("title"));
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
 }
