@@ -1,5 +1,7 @@
 package rna.FinalProjectAliceandRoma;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -257,9 +259,42 @@ public class TestView extends AppCompatActivity {
 
                     }
 
+                    radioGroup.clearCheck();
+
                 }
             }
         });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Закончить тест");
+        builder.setCancelable(false);
+        builder.setMessage("Вы не закончили прохождение теста" + ". " + "Уверены, что хотите выйти?");
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                TestView.super.onBackPressed();
+
+            }
+        });
+        builder.setNeutralButton(R.string.no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                dialogInterface.cancel();
+
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
 
     }
 
