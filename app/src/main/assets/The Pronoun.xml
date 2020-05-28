@@ -1,0 +1,21 @@
+<tests>
+
+    <question>Are these Roman’s shoes? Yes, they are ___</question>
+    <question>Peter is not home, but I can give you ___ phone number.
+    </question>
+    <question>My grandad was a senator and I am proud of ___</question>
+    <question>Ben boasted, that ___ would easily win this game</question>
+    <question>She put the blame on ___</question>
+
+    <option>his</option>
+    <option>him</option>
+    <option>he</option>
+    <option>-</option>
+
+    <rightAnswer>his</rightAnswer>
+    <rightAnswer>his</rightAnswer>
+    <rightAnswer>him</rightAnswer>
+    <rightAnswer>he</rightAnswer>
+    <rightAnswer>him</rightAnswer>
+
+</tests>
