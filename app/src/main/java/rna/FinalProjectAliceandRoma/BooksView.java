@@ -11,7 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 
 public class BooksView extends AppCompatActivity {
 
-    WebView pdf_view;
+    WebView documentView;
     Toolbar toolbar;
 
     @Override
@@ -21,8 +21,8 @@ public class BooksView extends AppCompatActivity {
 
         init();
 
-        pdf_view = findViewById(R.id.book_view);
-        pdf_view.loadUrl("file:///android_asset/booksTopics/" + getIntent().getExtras().getString("title") + ".html");
+        documentView = findViewById(R.id.book_view);
+        documentView.loadUrl("file:///android_asset/booksTopics/" + getIntent().getExtras().getString("title") + ".html");
 
     }
 
