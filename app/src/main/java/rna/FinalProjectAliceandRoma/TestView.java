@@ -48,9 +48,11 @@ public class TestView extends AppCompatActivity {
 
         init();
 
-        final List<String> questions = new ArrayList<>();
-        List<String> options = new ArrayList<>();
-        final List<String> rightAnswers = new ArrayList<>();
+        final List<String> question0 = new ArrayList<>();
+        final List<String> question1 = new ArrayList<>();
+        final List<String> question2 = new ArrayList<>();
+        final List<String> question3 = new ArrayList<>();
+        final List<String> question4 = new ArrayList<>();
 
         question = findViewById(R.id.questionView);
         radioGroup = findViewById(R.id.radioGroup);
@@ -85,7 +87,7 @@ public class TestView extends AppCompatActivity {
         Element element = document.getDocumentElement();
         element.normalize();
 
-        NodeList nodeList = document.getElementsByTagName("question");
+        NodeList nodeList = document.getElementsByTagName("question0");
         for (int i = 0; i < nodeList.getLength(); i++) {
 
             Node node = nodeList.item(i);
@@ -93,46 +95,75 @@ public class TestView extends AppCompatActivity {
                 Element element1 = (Element) node;
                 String question = element1.getTextContent();
 
-                questions.add(question);
+                question0.add(question);
 
             }
 
         }
 
-        nodeList = document.getElementsByTagName("option");
+        nodeList = document.getElementsByTagName("question1");
         for (int i = 0; i < nodeList.getLength(); i++) {
 
             Node node = nodeList.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element element1 = (Element) node;
-                String option = element1.getTextContent();
+                String question = element1.getTextContent();
 
-                options.add(option);
+                question1.add(question);
 
             }
 
         }
 
-        nodeList = document.getElementsByTagName("rightAnswer");
+        nodeList = document.getElementsByTagName("question2");
         for (int i = 0; i < nodeList.getLength(); i++) {
 
             Node node = nodeList.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element element1 = (Element) node;
-                String rightAnswer = element1.getTextContent();
+                String question = element1.getTextContent();
 
-                rightAnswers.add(rightAnswer);
+                question2.add(question);
 
             }
 
         }
 
-        question.setText(questions.get(0));
+        nodeList = document.getElementsByTagName("question3");
+        for (int i = 0; i < nodeList.getLength(); i++) {
 
-        firstOption.setText(options.get(0));
-        secondOption.setText(options.get(1));
-        thirdOption.setText(options.get(2));
-        fourthOption.setText(options.get(3));
+            Node node = nodeList.item(i);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element element1 = (Element) node;
+                String question = element1.getTextContent();
+
+                question3.add(question);
+
+            }
+
+        }
+
+
+        nodeList = document.getElementsByTagName("question4");
+        for (int i = 0; i < nodeList.getLength(); i++) {
+
+            Node node = nodeList.item(i);
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
+                Element element1 = (Element) node;
+                String question = element1.getTextContent();
+
+                question4.add(question);
+
+            }
+
+        }
+
+        question.setText(question0.get(0));
+
+        firstOption.setText(question0.get(1));
+        secondOption.setText(question0.get(2));
+        thirdOption.setText(question0.get(3));
+        fourthOption.setText(question0.get(4));
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,9 +184,9 @@ public class TestView extends AppCompatActivity {
 
                     if (count == 1) {
 
-                        question.setText(questions.get(1));
+                        question.setText(question1.get(0));
 
-                        if (userAnswer.equals(rightAnswers.get(0))) {
+                        if (userAnswer.equals(question0.get(5))) {
 
                             rightUserAnswersCount++;
 
@@ -163,9 +194,9 @@ public class TestView extends AppCompatActivity {
 
                     } else if (count == 2) {
 
-                        question.setText(questions.get(2));
+                        question.setText(question2.get(0));
 
-                        if (userAnswer.equals(rightAnswers.get(1))) {
+                        if (userAnswer.equals(question1.get(5))) {
 
                             rightUserAnswersCount++;
 
@@ -173,9 +204,9 @@ public class TestView extends AppCompatActivity {
 
                     } else if (count == 3) {
 
-                        question.setText(questions.get(3));
+                        question.setText(question3.get(0));
 
-                        if (userAnswer.equals(rightAnswers.get(2))) {
+                        if (userAnswer.equals(question2.get(5))) {
 
                             rightUserAnswersCount++;
 
@@ -183,9 +214,9 @@ public class TestView extends AppCompatActivity {
 
                     } else if (count == 4) {
 
-                        question.setText(questions.get(4));
+                        question.setText(question4.get(0));
 
-                        if (userAnswer.equals(rightAnswers.get(3))) {
+                        if (userAnswer.equals(question3.get(5))) {
 
                             rightUserAnswersCount++;
 
@@ -193,7 +224,7 @@ public class TestView extends AppCompatActivity {
 
                     } else if (count == 5) {
 
-                        if (userAnswer.equals(rightAnswers.get(4))) {
+                        if (userAnswer.equals(question4.get(5))) {
 
                             rightUserAnswersCount++;
 

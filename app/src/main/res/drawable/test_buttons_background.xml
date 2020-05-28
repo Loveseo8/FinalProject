@@ -6,8 +6,5 @@
 
     <solid android:color="@color/primary" />
 
-    <stroke
-        android:width="3dp"
-        android:color="@color/default_shadow_color" />
 
 </shape>
