@@ -178,6 +178,7 @@ public class TestView extends AppCompatActivity {
                 } else {
 
                     RadioButton selected = findViewById(selectedButton);
+
                     String userAnswer = selected.getText().toString();
 
                     count++;
@@ -185,6 +186,10 @@ public class TestView extends AppCompatActivity {
                     if (count == 1) {
 
                         question.setText(question1.get(0));
+                        firstOption.setText(question1.get(1));
+                        secondOption.setText(question1.get(2));
+                        thirdOption.setText(question1.get(3));
+                        fourthOption.setText(question1.get(4));
 
                         if (userAnswer.equals(question0.get(5))) {
 
@@ -195,6 +200,10 @@ public class TestView extends AppCompatActivity {
                     } else if (count == 2) {
 
                         question.setText(question2.get(0));
+                        firstOption.setText(question2.get(1));
+                        secondOption.setText(question2.get(2));
+                        thirdOption.setText(question2.get(3));
+                        fourthOption.setText(question2.get(4));
 
                         if (userAnswer.equals(question1.get(5))) {
 
@@ -205,6 +214,10 @@ public class TestView extends AppCompatActivity {
                     } else if (count == 3) {
 
                         question.setText(question3.get(0));
+                        firstOption.setText(question3.get(1));
+                        secondOption.setText(question3.get(2));
+                        thirdOption.setText(question3.get(3));
+                        fourthOption.setText(question3.get(4));
 
                         if (userAnswer.equals(question2.get(5))) {
 
@@ -215,6 +228,10 @@ public class TestView extends AppCompatActivity {
                     } else if (count == 4) {
 
                         question.setText(question4.get(0));
+                        firstOption.setText(question4.get(1));
+                        secondOption.setText(question4.get(2));
+                        thirdOption.setText(question4.get(3));
+                        fourthOption.setText(question4.get(4));
 
                         if (userAnswer.equals(question3.get(5))) {
 
