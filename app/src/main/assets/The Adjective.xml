@@ -24,31 +24,35 @@
 
     <question1>the</question1>
 
-    <question2>What__beautiful day!</question2>
+    <question2>Образуйте сравнительную степень от следующих прилагательных: good, large, hot,
+        little
+    </question2>
 
-    <question2>a</question2>
-    <question2>an</question2>
-    <question2>the</question2>
-    <question2>-</question2>
+    <question2>gooder, larger, hoter, less</question2>
+    <question2>better, larger, hoter, less</question2>
+    <question2>gooder, largger, hottes, littler</question2>
+    <question2>better, larger, hotter, less</question2>
 
-    <question2>a</question2>
+    <question2>better, larger, hotter, less</question2>
 
-    <question3>You need to take___more care with your spelling</question3>
+    <question3>Our kitchen is___than bedroom</question3>
 
-    <question3>a</question3>
-    <question3>an</question3>
-    <question3>the</question3>
-    <question3>-</question3>
+    <question3>the smaller</question3>
+    <question3>more small</question3>
+    <question3>smaller</question3>
+    <question3>small</question3>
 
-    <question3>-</question3>
+    <question3>smaller</question3>
 
-    <question4>Many animals were left homeless as___result of bushfire</question4>
+    <question4>Образуйте превосходную степень от следующих прилагательных: beautiful, far, cold,
+        long
+    </question4>
 
-    <question4>a</question4>
-    <question4>an</question4>
-    <question4>the</question4>
-    <question4>-</question4>
+    <question4>the most beautiful, the farest, the coldest, the longest</question4>
+    <question4>the beautifulest, the farthest, the coldest, the longgest</question4>
+    <question4>the most beautiful, the farthest, the coldest, the longest</question4>
+    <question4>the most beautiful, the farthest, the most cold, the longest</question4>
 
-    <question4>a</question4>
+    <question4>the most beautiful, the farthest, the coldest, the longest</question4>
 
 </tests>

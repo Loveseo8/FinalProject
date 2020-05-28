@@ -1,5 +1,7 @@
 package rna.FinalProjectAliceandRoma;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.webkit.WebView;
 
@@ -21,6 +23,37 @@ public class BooksView extends AppCompatActivity {
 
         pdf_view = findViewById(R.id.book_view);
         pdf_view.loadUrl("file:///android_asset/booksTopics/" + getIntent().getExtras().getString("title") + ".html");
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Выйти");
+        builder.setCancelable(false);
+        builder.setMessage("Вы уверены, что хотите выйти?");
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                BooksView.super.onBackPressed();
+
+            }
+        });
+        builder.setNeutralButton(R.string.no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                dialogInterface.cancel();
+
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
 
     }
 

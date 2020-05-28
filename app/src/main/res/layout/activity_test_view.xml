@@ -38,7 +38,7 @@
             android:textColor="@color/primary"
             android:background="@drawable/question_bacgound"
             android:textStyle="bold"
-            android:layout_margin="20dp" />
+            android:layout_margin="15dp" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -55,7 +55,6 @@
                 android:button="@null"
                 android:freezesText="true"
                 android:gravity="center"
-                android:textSize="22sp"
                 android:textColor="@android:color/white"
                 style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
 
@@ -69,7 +68,6 @@
                 android:button="@null"
                 android:freezesText="true"
                 android:textColor="@android:color/white"
-                android:textSize="22sp"
                 style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
             <RadioButton
                 android:id="@+id/thirdOption"
@@ -81,7 +79,6 @@
                 android:button="@null"
                 android:freezesText="true"
                 android:textColor="@android:color/white"
-                android:textSize="22sp"
                 style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
             <RadioButton
                 android:id="@+id/fourthOption"
@@ -93,7 +90,6 @@
                 android:button="@null"
                 android:freezesText="true"
                 android:textColor="@android:color/white"
-                android:textSize="22sp"
                 style="@style/Widget.AppCompat.CompoundButton.RadioButton"/>
         </RadioGroup>
 
