@@ -17,11 +17,11 @@ import com.google.firebase.database.FirebaseDatabase;
 public class TestResult extends AppCompatActivity {
 
     String result;
-    TextView testResult;
+    TextView textViewResult;
     Toolbar toolbar;
     DatabaseReference databaseResults;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    Button goBack;
+    Button buttonGoBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +33,13 @@ public class TestResult extends AppCompatActivity {
         databaseResults = FirebaseDatabase.getInstance().getReference("tests");
 
         result = getIntent().getExtras().getString("result");
-        testResult = findViewById(R.id.testResult);
-        testResult.setText(result);
-        goBack = findViewById(R.id.button_go_back);
+        textViewResult = findViewById(R.id.testResult);
+        textViewResult.setText(result);
+        buttonGoBack = findViewById(R.id.button_go_back);
 
         addResult();
 
-        goBack.setOnClickListener(new View.OnClickListener() {
+        buttonGoBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

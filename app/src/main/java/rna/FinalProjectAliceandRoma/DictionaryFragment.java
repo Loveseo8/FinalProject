@@ -63,6 +63,9 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new RecyclerViewAdapter(userWords, getContext());
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
 
     }
 
@@ -101,7 +104,6 @@ public class DictionaryFragment extends Fragment implements RecyclerViewAdapter.
         adapter = new RecyclerViewAdapter(userWords, getContext());
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
-
     }
 
     private void addWord() {

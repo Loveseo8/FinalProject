@@ -18,7 +18,7 @@
             android:name=".TestView"
             android:parentActivityName=".BottomNavigation" />
         <activity
-            android:name=".EnterPassword"
+            android:name=".EnterNewUserInfo"
             android:parentActivityName=".BottomNavigation" />
         <activity
             android:name=".TestResult"

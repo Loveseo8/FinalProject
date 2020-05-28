@@ -93,7 +93,7 @@ public class SettingsListFragment extends Fragment implements RecyclerViewAdapte
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        Intent i = new Intent(getActivity(), EnterPassword.class);
+                        Intent i = new Intent(getActivity(), EnterNewUserInfo.class);
                         i.putExtra("change", "почту");
                         startActivity(i);
 
@@ -110,7 +110,7 @@ public class SettingsListFragment extends Fragment implements RecyclerViewAdapte
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        Intent i = new Intent(getActivity(), EnterPassword.class);
+                        Intent i = new Intent(getActivity(), EnterNewUserInfo.class);
                         i.putExtra("change", "пароль");
                         startActivity(i);
 
